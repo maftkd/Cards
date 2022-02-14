@@ -3212,6 +3212,7 @@ MonoBehaviour:
   _cardMain: {fileID: 2100000, guid: 8c4ea467876025e49b68f94fa49f7ac1, type: 2}
   _bg: {fileID: 2100000, guid: 23c3c8fbf13a7994a96f3cdb084753b3, type: 2}
   _probe: {fileID: 16878148}
+  _rotateLerp: 3
 --- !u!4 &1140311719
 Transform:
   m_ObjectHideFlags: 0

@@ -5144,7 +5144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52f0410dabf2dc44aaf22942b354293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _smashDur: 1.5
+  _smashDur: 1
   _smashCurve:
     serializedVersion: 2
     m_Curve:

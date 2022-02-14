@@ -66,7 +66,6 @@ public class NutSmasher : MonoBehaviour
 				fxPlay=true;
 
 				//update smash count
-				_smashing=false;
 
 				int smashCount=0;
 				if(PlayerPrefs.HasKey("smashed")){
@@ -82,6 +81,6 @@ public class NutSmasher : MonoBehaviour
 		}
 		transform.rotation=_startRot;
 		_nutMesh.enabled=true;
-
+		_smashing=false;
 	}
 }

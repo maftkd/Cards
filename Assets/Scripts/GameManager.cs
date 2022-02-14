@@ -33,14 +33,23 @@ public class GameManager : MonoBehaviour
 		_mainCam=Camera.main.transform;
 		_camStart=_mainCam.position;
 		_cardViewer=false;
+		_pivotTarget = new GameObject("pivot target").transform;
     }
 
+	Vector3 _prevPos;
+	public float _rotateLerp;
+	Transform _pivotTarget;
     // Update is called once per frame
     void Update()
     {
-		if(_cardViewer && Input.GetMouseButton(0))
-		{
-			_pivot.eulerAngles+=Vector3.up*Input.GetAxis("Mouse X")*_spinSpeed;
+		if(_cardViewer){
+			if(Input.GetMouseButton(0)){
+				float xDelta=Input.mousePosition.x-_prevPos.x;
+				_pivotTarget.Rotate(Vector3.up*xDelta);
+			}
+			_pivot.rotation=Quaternion.Slerp(_pivot.rotation,_pivotTarget.rotation,Time.deltaTime*_rotateLerp);
+
+			_prevPos=Input.mousePosition;
 		}
     }
 
@@ -51,6 +60,8 @@ public class GameManager : MonoBehaviour
 		_card = Instantiate(_cards[index]._cardPrefab);
 		_pivot = _card.GetChild(0);
 		_mainCam.SetParent(_pivot);
+		_pivotTarget.rotation=_pivot.rotation;
+		_pivot.localPosition=Vector3.up*0.01f;
 		_cardViewer=true;
 		_cardBorder.SetColor("_Color",_cards[index]._border);
 		_cardMain.SetColor("_Color",_cards[index]._main);
